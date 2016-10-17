@@ -87,4 +87,28 @@ class AllFunction
        }
     }
 
+    public  static function MyLevel($level){
+        if ($level <= 3){
+            echo '1';
+        }
+        elseif ($level <= 9){
+            echo '2';
+        }else if($level <= 9){
+            echo '3';
+        }else if($level <= 21){
+            echo '4';
+        }else if($level <= 81){
+            echo '5';
+
+        }else if($level <= 243){
+            echo '6';
+        }else if($level <= 729){
+            echo  '7';
+        }else if($level <= 2187){
+            echo '8';
+        } else{
+            echo 'Out Of The System';
+        }
+    }
+
 }

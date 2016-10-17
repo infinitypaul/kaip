@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="mlf" uuid="27a0b8fc-9f30-4f15-90d0-39bc2a973d70">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>mlf.*</schema-pattern>
+      <default-schemas>mlf.*</default-schemas>
+    </data-source>
+  </component>
+</project>

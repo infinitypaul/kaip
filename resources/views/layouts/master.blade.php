@@ -1,4 +1,7 @@
+<?php
 
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +50,7 @@
 
 			<!-- Logo container-->
 			<div class="logo">
-				<a href="index.html" class="logo"><i class="md md-equalizer"></i> <span>My Liberty Family</span> </a>
+				<a href="#" class="logo"><i class="md md-equalizer"></i> <span>My Liberty Family</span> </a>
 			</div>
 			<!-- End Logo container-->
 
@@ -136,12 +139,12 @@
 					</li>
 
 					<li class="dropdown">
-						<a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+						<a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ auth()->user()->location }}" alt="{{ auth()->user()->name }}" class="img-circle"> </a>
 						<ul class="dropdown-menu">
-							<li><a href="javascript:void(0)"><i class="ti-user m-r-5"></i> Profile</a></li>
+							<li><a href="{{url('dashboard/'.auth()->user()->id.'')}}/edit"><i class="ti-user m-r-5"></i> Edit Profile</a></li>
 							<li><a href="javascript:void(0)"><i class="ti-settings m-r-5"></i> Settings</a></li>
 							<li><a href="javascript:void(0)"><i class="ti-lock m-r-5"></i> Lock screen</a></li>
-							<li><a href="javascript:void(0)"><i class="ti-power-off m-r-5"></i> Logout</a></li>
+							<li><a href="{{ url('/logout') }}"><i class="ti-power-off m-r-5"></i> Logout</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -171,25 +174,25 @@
 				<!-- Navigation Menu-->
 				<ul class="navigation-menu">
 					<li class="has-submenu active">
-						<a href="index.html"><i class="md md-dashboard"></i><b>DASHBOARD</b></a>
+						<a href="{{ action('UserController@index') }}"><i class="md md-dashboard"></i><b>DASHBOARD</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="genealogy.html"><i class="md md-trending-up"></i><b>FAMILY GENEAOLOGY</b></a>
+						<a href="#"><i class="md md-trending-up"></i><b>FAMILY GENEAOLOGY</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="payout.html"><i class="md md-credit-card"></i><b>MY PAYOUTS</b></a>
+						<a href="#"><i class="md md-credit-card"></i><b>MY PAYOUTS</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="help.html"><i class="md md-accessibility"></i><b>REQUEST HELP</b></a>
+						<a href="#"><i class="md md-accessibility"></i><b>REQUEST HELP</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="give.html"><i class="md md-help"></i><b>GIVE HELP</b></a>
+						<a href="{{ action('UserController@GiveHelp') }}"><i class="md md-help"></i><b>GIVE HELP</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="resources.html"><i class="md md-perm-media"></i><b>RESOURCES</b></a>
+						<a href="#"><i class="md md-perm-media"></i><b>RESOURCES</b></a>
 					</li>
 					<li class="has-submenu active">
-						<a href="support.html"><i class="md md-settings"></i><b>SUPPORT</b></a>
+						<a href="{{ url('tickets') }}"><i class="md md-settings"></i><b>SUPPORT</b></a>
 					</li>
 					<!-- <li class="has-submenu">
                         <a href="#"><i class="md md-color-lens"></i>UI Kit</a>

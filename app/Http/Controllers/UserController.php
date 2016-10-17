@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Code;
 use App\Http\Requests\Registration;
+use App\Http\Requests\UpdateProfile;
 use App\Referral;
 use App\User;
 use Auth;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use AllFunction;
 use Illuminate\Support\Facades\Validator;
+use Inwave\LaravelUploadcare\Facades\Uploadcare;
 use Mail;
 use Redirect;
 use Response;
@@ -21,7 +23,7 @@ class UserController extends Controller
 
     public function __construct() {
         $this->middleware('auth')->except('store');
-        $this->middleware('IfActive')->except(['store','verify', 'upload']);
+        $this->middleware('IfActive')->except(['store','verify']);
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +33,12 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home', compact('user'));
+        $mylevel = $user->refer()->first()->getDescendants();
+        $notification = $user->refer()->first()->getDescendants(7);
+        $mycount = $mylevel->count();
+
+        //echo $level = $notification->count();
+        return view('home', compact('user', 'mycount', 'notification'));
     }
 
     /**
@@ -119,7 +126,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $mylevel = $user->refer()->first()->getDescendants();
+        //$notification = $referby->refer()->first()->getDescendantsAndSelf(7);
+        $mycount = $mylevel->count();
+        return view('update', compact('user', 'mycount'));
     }
 
     /**
@@ -129,9 +140,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProfile $request, $id)
     {
-        //
+        $user = User::findorFail($id);
+        if ($request->has('email')) $user->email = $request->input('email');
+        if ($request->has('mobile')) $user->mobile = $request->input('mobile');
+        if ($request->has('aoi')) $user->aoi = $request->input('aoi');
+        if ($request->has('gender')) $user->gender = $request->input('gender');
+        if ($request->has('nok_fn')) $user->nok_fn = $request->input('nok_fn');
+        if ($request->has('nok_ln')) $user->nok_ln = $request->input('nok_ln');
+        if ($request->has('nok_add')) $user->nok_add = $request->input('nok_add');
+        if ($request->has('nok_pn')) $user->nok_pn = $request->input('nok_fn');
+        if ($request->has('dob')) $user->dob = $request->input('dob');
+        if ($request->has('password')) $user->password = bcrypt($request->input('password'));
+        if($request->input('image'))$user->location = Uploadcare::getFile($request->input('image'))->getUrl();
+        $user->save();
+        $request->session()->flash('success', 'Profile Successfully Upfated');
+        return Redirect::to('dashboard/'.$id.'/edit');
     }
 
     /**
@@ -191,5 +216,12 @@ class UserController extends Controller
         } else {
             return Response::json('error', 400);
         }
+    }
+
+    public function GiveHelp(){
+        $user = Auth::user();
+        $mylevel = $user->refer()->first()->getDescendants();
+        $mycount = $mylevel->count();
+        return view('help', compact('user', 'mycount'));
     }
 }

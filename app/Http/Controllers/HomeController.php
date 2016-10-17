@@ -12,6 +12,7 @@ use App\Http\Requests;
 
 use AllFunction;
 use Illuminate\Support\Facades\Input;
+use Redirect;
 use Response;
 
 class HomeController extends Controller
@@ -92,6 +93,12 @@ class HomeController extends Controller
         return Response::json($results);
     }
 
+    public function logout()
+    {
+       ;
+        Auth::logout();
+        return Redirect::to('login');
+    }
 
 
 }

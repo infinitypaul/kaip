@@ -49,11 +49,13 @@ Route::get('/demo', function () {
     return 'done';
 });
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('logout', ['as' => 'login', 'uses' => 'HomeController@logout']);
 Route::get('login', ['as' => 'login', 'uses' => 'HomeController@login']);
 Route::post('login', ['uses' => 'HomeController@postLogin']);
 Route::get('register', ['as' => 'register', 'uses' => 'HomeController@register']);
 Route::post('upload', ['as' => 'upload', 'uses' => 'UserController@upload']);
 Route::get('verify', ['as' => 'verify', 'uses' => 'UserController@verify']);
+Route::get('dashboard/givehelp', ['as' => 'givehelp', 'uses' => 'UserController@GiveHelp']);
 Route::post('register', ['as' => 'register', 'uses' => 'UserController@store']);
 
 Route::get('smscode/{id}', ['as' => 'sms', 'uses' => 'HomeController@sms']);

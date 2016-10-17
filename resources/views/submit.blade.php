@@ -90,7 +90,7 @@
                                                             <th scope="row">{{$virtual->user_code}}</th>
                                                             <td>Support <?php
                                                                 AllFunction::Level($counto, $virtual->gender) ?></td>
-                                                            <td>{{$virtual->user_code}}</td>
+                                                            <td>{{$virtual->bank_account}}</td>
                                                             <td>{{$virtual->bank_name}}</td>
                                                             <td>{{$virtual->account_no}}</td>
                                                             <td>&#8358;3000</td>
