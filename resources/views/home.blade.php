@@ -2,28 +2,28 @@
 
 @section('content')
 
-                    <h4 class="page-title" style="border-bottom: 2px solid #817D79; color: #0D3645;"><strong>WELCOME BACK, {{  AllFunction::Level($mycount, $user->gender) }}, {{ $user->name }}</strong></h4>
+                    <h4 class="page-title" style="border-bottom: 2px solid #c93200;"><strong>Welcome Back, {{  AllFunction::Level($mycount, $user->gender) }}, {{ $user->name }}</strong></h4>
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="widget-simple-chart text-right card-box">
-                                <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#00B19D" data-bgcolor="#ebeff2"></div>
-                                <h3 class="text-success counter"><strong>{{  AllFunction::MyLevel($mycount) }}</strong></h3>
+                                <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#c93200" data-bgcolor="#ebeff2"></div>
+                                <h3 class="text-inverse counter"><strong>{{  AllFunction::MyLevel($mycount) }}</strong></h3>
                                 <p class="text-dark"><strong>CURRENT LEVEL</strong></p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="widget-simple-chart text-center card-box">
-                                <h3 class="text-success">&#8358;<span class="counter">0</span></h3>
+                                <h3 class="text-inverse">&#8358;<span class="counter">0</span></h3>
                                 <p class="text-dark"><strong>TOTAL PAYOUTS</strong></p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <div class="card-box widget-icon">
                                 <div>
-                                    <i class="md md-account-child text-success"></i>
+                                    <i class="md md-account-child text-inverse"></i>
                                     <div class="wid-icon-info">
                                         <p class="text-dark m-b-5 font-13 text-uppercase"><strong>NO OF FAMILY MEMBERS</strong></p>
-                                        <h4 class="m-t-0 m-b-5 text-success counter">{{ $mycount }}</h4>
+                                        <h4 class="m-t-0 m-b-5 text-inverse counter">{{ $mycount }}</h4>
                                         <small class="text-danger"><b>{{ $mycount }}% Up</b></small>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="card-box">
                                 <h4 class="text-dark  header-title m-t-0">FAMILY TREE</h4>
                                 <p class="text-muted m-b-25 font-13">
@@ -50,7 +50,7 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>User Code</th>
                                             <th>Member Name</th>
                                             <th>Reg Date</th>
                                             <th>level</th>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                            <a href="{{ action('UserController@GiveHelp') }}"> <div class="m-b-30" style="background-image: url(assets/images/ask.jpg); background-size:cover; background-position:center center; height:200px;">
 
                             </div></a>
@@ -89,6 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
     @stop

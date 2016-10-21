@@ -12,10 +12,10 @@
                     {{auth()->user()->name}}
                 </dd>
                 <dt>
-                    Level
+                    User Code
                 </dt>
                 <dd>
-                    Level 
+                    {{auth()->user()->user_code}}
                 </dd>
                 <dt>
                     Phone Number
@@ -26,11 +26,11 @@
             </dl>
         </div>
         <div class="panel-footer text-right">
-            <a href="{{url('dashboard/'.auth()->user()->id.'')}}/edit" style="color:#030D11;"><b>UPDATE PROFILE</b></a>
+            <a href="{{url('dashboard/'.auth()->user()->id.'')}}/edit" style="color:#c93200;"><b>UPDATE PROFILE</b></a>
         </div>
     </div>
 
-    <div class="panel panel-border panel-warning">
+    <div class="panel panel-color panel-inverse">
         <div class="panel-heading">
             <h3 class="panel-title">Bank Info</h3>
         </div>
@@ -38,24 +38,25 @@
             <a href="#"><b>{{ucwords(auth()->user()->bank_name)}}</b></a><br/>
             <a href="#"><strong>{{auth()->user()->bank_account}}</strong></a><br/>
             <a href="#"><strong>{{auth()->user()->account_no}}</strong></a><br/>
-            <hr>
-            <a href="{{ url('ticket') }}">Change Bank Info</a>
+        </div>
+        <div class="panel-footer text-right">
+            <a href="{{ url('ticket') }}" style="color:#2A8D4A;"><b>CHANGE BANK INFO</b></a>
         </div>
     </div>
 
-    <div class="panel panel-border panel-primary">
+    <div class="panel panel-color panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Wallet</h3>
         </div>
         <div class="panel-body">
             <div class="widget-simple-chart text-right card-box" style="border: none;">
-                <div class="circliful-chart" data-dimension="90" data-text="0%" data-width="5" data-fontsize="14" data-percent="{{auth()->user()->wallet}}" data-fgcolor="#3BAFDA" data-bgcolor="#ebeff2"></div>
-                <h3 class="text-success">&#8358;<span class="counter">{{ auth()->user()->wallet }}</span></h3>
-                <p class="text-primary">Total amount in your wallet</p>
+                <div class="circliful-chart" data-dimension="90" data-text="0%" data-width="5" data-fontsize="14" data-percent="{{auth()->user()->wallet}}" data-fgcolor="#c93200" data-bgcolor="#ebeff2"></div>
+                <h3 class="text-inverse">&#8358;<span class="counter">{{ auth()->user()->wallet }}</span></h3>
+                <p class="text-primary">Total paid amount</p>
             </div>
         </div>
-        <div class="panel-footer text-right" style="background-color:#3BAFDA;">
-            <a href="#" style="color:#030D11;"><b>VIEW WALLET</b></a>
+        <div class="panel-footer text-right">
+            <a href="#" style="color:#C93200;"><b>VIEW WALLET</b></a>
         </div>
     </div>
 
