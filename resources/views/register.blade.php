@@ -22,6 +22,20 @@
 
     <script src="assets/js/modernizr.min.js"></script>
 
+    <!-- Main  -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/detect.js"></script> 
+    <script src="assets/js/fastclick.js"></script>
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <script src="assets/js/jquery.blockUI.js"></script>
+    <script src="assets/js/waves.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,14 +62,14 @@
             {{ csrf_field() }}
             <div id="rootwizard" class="pull-in">
                 <ul>
-                    <li><a href="#first" style=" pointer-events: none; cursor: default;" data-toggle="tab" disabled>BASIC DETAILS</a></li>
-                    <li><a href="#second" style=" pointer-events: none; cursor: default;" data-toggle="tab">BANK DETAILS</a></li>
-                    <li><a href="#third" style=" pointer-events: none; cursor: default;" data-toggle="tab">REGISTRATION MODE</a></li>
+                    <li><a href="#first" data-toggle="tab" disabled>BASIC DETAILS</a></li>
+                    <li><a href="#second" data-toggle="tab">BANK DETAILS</a></li>
+                    <li><a href="#third" data-toggle="tab">REGISTRATION MODE</a></li>
                 </ul>
                 <div class="tab-content m-b-0 bx-s-0">
                     <div class="tab-pane fade" id="first">
-                        @include('layouts.emessage');
-                        @include('layouts.error');
+                        @include('layouts.emessage')
+                        @include('layouts.error')
                         <div class="form-group">
                             <div class="col-md-6 col-sm-12 controls{{ $errors->has('FirstName') ? ' has-error' : '' }}">
                                 <input id="firstnamefield" name="FirstName" class="required form-control" aria-required="true" value="{{ old('FirstName') }}" type="text" placeholder="First Name">
@@ -277,9 +291,9 @@
                     <div class="tab-pane fade" id="third">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <label class="control-label" for="urlfield">Select Your Mode Of Registration</label>
+                                <label class="control-label" for="refer">Select Your Mode Of Registration</label>
                                 <div class="controls{{ $errors->has('refer') ? ' has-error' : '' }}">
-                                    <select class="form-control" name="refer" id="refer">
+                                    <select class="form-control" name="refer" id="refer" onchange="changer();">
                                         <option value="1" @if (old('refer') == '1') selected="selected" @endif>Through Referral</option>
                                         <option value="0" @if (old('refer') == '0') selected="selected" @endif>Without Referral</option>
                                     </select>
@@ -291,7 +305,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="rcing">
                             <div class="col-md-12{{ $errors->has('rc') ? ' has-error' : '' }}">
                                 <input class="required form-control input-sm" name="rc" type="text" required=""
                                        placeholder="Referral Code" id="rc" value="{{ old('rc') }}">
@@ -303,9 +317,32 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="panel panel-border panel-primary">
+                            <div class="panel-heading">
+                                <h5>OTHER INFORMATION</h5>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-12 m-b-15">
+                                        <label class="control-label">Registration Category</label>
+                                        <div class="controls">
+                                            <select class="form-control" id="cate" onchange="changer2();">
+                                                <option value="free">Select Cataegory</option>
+                                                <option value="free">Free Fall System</option>
+                                                <option value="help">Help System</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <!-- <label><strong>TERMS AND CONDITONS</strong></label> -->
+                                        <p id="terms"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <input class="btn btn-primary" value="Process" name="submit" type="submit" >
+                                <input class="btn btn-success" value="Finish" name="submit" type="submit" >
 
                             </div>
                         </div>
@@ -355,17 +392,7 @@
     var resizefunc = [];
 </script>
 
-<!-- Main  -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/detect.js"></script>
-<script src="assets/js/fastclick.js"></script>
-<script src="assets/js/jquery.slimscroll.js"></script>
-<script src="assets/js/jquery.blockUI.js"></script>
-<script src="assets/js/waves.js"></script>
-<script src="assets/js/wow.min.js"></script>
-<script src="assets/js/jquery.nicescroll.js"></script>
-<script src="assets/js/jquery.scrollTo.min.js"></script>
+
 
 
 <script src="assets/plugins/switchery/switchery.min.js"></script>

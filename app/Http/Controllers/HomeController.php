@@ -84,7 +84,7 @@ class HomeController extends Controller
         $term = Input::get('term');
         $results = array();
         $queries = User::Where('user_code', 'LIKE', '%'.$term.'%')
-            ->Where('active', '=', '0')->inRandomOrder()
+            ->Where('active', '=', '1')
             ->take(5)->get();
         foreach ($queries as $query)
         {

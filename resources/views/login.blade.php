@@ -79,7 +79,7 @@
                             password?</a>
                     </div>
                     <div class="col-sm-5 text-right">
-                        <a href="register.html" class="text-muted">Create an account</a>
+                        <a href="register" class="text-muted">Create an account</a>
                     </div>
                 </div>
             </form>
