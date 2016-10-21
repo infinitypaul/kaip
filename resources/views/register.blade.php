@@ -381,7 +381,7 @@
 
     <div class="form-group m-t-30">
         <div class="col-sm-12 text-center">
-            <a href="login.html" class="text-muted">Already have account?</a>
+            <a href="login" class="text-muted">Already have account?</a>
         </div>
     </div>
 
