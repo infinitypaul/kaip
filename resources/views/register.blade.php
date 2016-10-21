@@ -327,7 +327,7 @@
                                         <label class="control-label">Registration Category</label>
                                         <div class="controls">
                                             <select class="form-control" id="cate" onchange="changer2();">
-                                                <option value="free">Select Cataegory</option>
+                                                <option value="">Select Category</option>
                                                 <option value="free">Free Fall System</option>
                                                 <option value="help">Help System</option>
                                             </select>
