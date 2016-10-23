@@ -2,11 +2,12 @@
 
 @section('content')
 
-                    <h4 class="page-title" style="border-bottom: 2px solid #c93200;"><strong>Welcome Back, {{  AllFunction::Level($mycount, $user->gender) }}, {{ $user->name }}</strong></h4>
+                    <h4 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Welcome Back, {{  AllFunction::Level($mycount, $user->gender) }}, {{ $user->name }}</strong></h4>
+
                     <div class="row">
                         <div class="col-md-4 col-sm-6">
                             <div class="widget-simple-chart text-right card-box">
-                                <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#c93200" data-bgcolor="#ebeff2"></div>
+                                <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#154604" data-bgcolor="#ebeff2"></div>
                                 <h3 class="text-inverse counter"><strong>{{  AllFunction::MyLevel($mycount) }}</strong></h3>
                                 <p class="text-dark"><strong>CURRENT LEVEL</strong></p>
                             </div>
@@ -20,7 +21,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="card-box widget-icon">
                                 <div>
-                                    <i class="md md-account-child text-inverse"></i>
+                                    <i class="md md-account-child text-primary"></i>
                                     <div class="wid-icon-info">
                                         <p class="text-dark m-b-5 font-13 text-uppercase"><strong>NO OF FAMILY MEMBERS</strong></p>
                                         <h4 class="m-t-0 m-b-5 text-inverse counter">{{ $mycount }}</h4>

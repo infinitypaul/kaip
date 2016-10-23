@@ -62,9 +62,9 @@
             {{ csrf_field() }}
             <div id="rootwizard" class="pull-in">
                 <ul>
-                    <li><a href="#first" data-toggle="tab" disabled>BASIC DETAILS</a></li>
-                    <li><a href="#second" data-toggle="tab">BANK DETAILS</a></li>
-                    <li><a href="#third" data-toggle="tab">REGISTRATION MODE</a></li>
+                    <li><a href="#first" style=" pointer-events: none; cursor: default;" data-toggle="tab" disabled>BASIC DETAILS</a></li>
+                    <li><a href="#second" style=" pointer-events: none; cursor: default;" data-toggle="tab">BANK DETAILS</a></li>
+                    <li><a href="#third" style=" pointer-events: none; cursor: default;" data-toggle="tab">REGISTRATION MODE</a></li>
                 </ul>
                 <div class="tab-content m-b-0 bx-s-0">
                     <div class="tab-pane fade" id="first">

@@ -26,7 +26,7 @@
             </dl>
         </div>
         <div class="panel-footer text-right">
-            <a href="{{url('dashboard/'.auth()->user()->id.'')}}/edit" style="color:#c93200;"><b>UPDATE PROFILE</b></a>
+            <a href="{{url('dashboard/'.auth()->user()->id.'')}}/edit" style="color:#154604;"><b>UPDATE PROFILE</b></a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
             <a href="#"><strong>{{auth()->user()->account_no}}</strong></a><br/>
         </div>
         <div class="panel-footer text-right">
-            <a href="{{ url('ticket') }}" style="color:#2A8D4A;"><b>CHANGE BANK INFO</b></a>
+            <a href="{{ url('ticket') }}" style="color:#ff4c06;"><b>CHANGE BANK INFO</b></a>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="panel-footer text-right">
-            <a href="#" style="color:#C93200;"><b>VIEW WALLET</b></a>
+            <a href="#" style="color:#154604;"><b>VIEW WALLET</b></a>
         </div>
     </div>
 

@@ -229,7 +229,7 @@ pre {
   background: transparent !important;
 }
 .bg-primary {
-  background-color: #c93200 !important;
+  background-color: #154604 !important;
 }
 .bg-success {
   background-color: #00b19d !important;
@@ -247,7 +247,7 @@ pre {
   background-color: #F5F5F5 !important;
 }
 .bg-inverse {
-  background-color: #2a8d4a !important;
+  background-color: #ff4c06 !important;
 }
 .bg-purple {
   background-color: #7266ba !important;
@@ -268,7 +268,7 @@ pre {
   color: #98a6ad;
 }
 .text-primary {
-  color: #c93200;
+  color: #154604;
 }
 .text-warning {
   color: #ffaa00;
@@ -280,7 +280,7 @@ pre {
   color: #3ddcf7;
 }
 .text-inverse {
-  color: #2a8d4a;
+  color: #ff4c06;
 }
 .text-pink {
   color: #f76397;
@@ -312,7 +312,7 @@ pre {
   color: #ffffff !important;
 }
 .label-primary {
-  background-color: #c93200;
+  background-color: #154604;
 }
 .label-success {
   background-color: #00b19d;
@@ -336,7 +336,7 @@ pre {
   background: #4f595b;
 }
 .label-inverse {
-  background-color: #2a8d4a;
+  background-color: #ff4c06;
 }
 .badge {
   font-weight: 600;
@@ -355,7 +355,7 @@ pre {
   transform: translate(0, -2px);
 }
 .badge-primary {
-  background-color: #c93200;
+  background-color: #154604;
 }
 .badge-success {
   background-color: #00b19d;
@@ -376,7 +376,7 @@ pre {
   background-color: #f76397;
 }
 .badge-inverse {
-  background-color: #2a8d4a;
+  background-color: #ff4c06;
 }
 /* Pagination/ Pager */
 .pagination > li:first-child > a,
@@ -1102,7 +1102,7 @@ pre {
   background-color: rgba(0, 150, 136, 0.7);
 }
 .waves-effect.waves-primary .waves-ripple {
-  background-color: rgba(59, 175, 218, 0.4);
+  background-color: rgba(21, 70, 4, 0.4);
 }
 .waves-notransition {
   -webkit-transition: none !important;

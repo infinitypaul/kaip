@@ -24,16 +24,16 @@ File: Menu
   min-height: 62px;
 }
 #topnav .has-submenu.active a {
-  color: #C93200;
+  color: #154604;
 }
 #topnav .has-submenu.active a i {
-  color: #c93200;
+  color: #154604;
 }
 #topnav .has-submenu.active .submenu li.active a {
-  color: #c93200;
+  color: #154604;
 }
 #topnav .topbar-main {
-  background-color: #CC3300;
+  background-color: #154604;
 }
 #topnav .topbar-main .logo {
   color: #ffffff !important;
