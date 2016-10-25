@@ -58,6 +58,7 @@
                                 <div class="panel-body">
                                     <div class="form-group clearfix">
                                         <div class="col-lg-12">
+                                            <h5 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Your Family ID is <i>344wi87</i></strong></h5>
                                             <p class="lead text-center">Support directly into the below 7 accounts. <br> </p>
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-condensed table-responsive m-0">
@@ -125,107 +126,56 @@
                                                     <button class="btn btn-warning waves-effect waves-light m-b-5"> <i class="fa fa-file-pdf-o m-r-5"></i> <span><b>DOWNLOAD ACCOUNT<br/> DETAILS IN PDF</b></span> </button>
                                                 </div>
                                             </div>
-                                            <p class="lead text-center">Supports can be made via any of the following options</p><hr>
-                                            <div class="panel-group" id="accordion-test-2">
-                                                <div class="panel panel-default">
+                                            <p class="lead text-center">Supports can be made via Quickteller</p><hr>
+                                            <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseOne-2" aria-expanded="false" class="collapsed">
-                                                                SUPPORT THROUGH PAGA
-                                                            </a>
+                                                            SUPPORT THROUGH Quickteller
                                                         </h4>
                                                     </div>
-                                                    <div id="collapseOne-2" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <p class="text 1"><b>Support through PAGA Collection centres</b></p>
-                                                            <p>Payments can be made at any paga collection centre... <a href="#">click here</a> to find out the closest paga centre to you.<br/> To do this, kindly download the account information above, print it out and take it to your paga centre alongsode your cash</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-2" class="collapsed" aria-expanded="false">
-                                                                SUPPORT THROUGH Quickteller
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree-2" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <p class="text 1"><b>Support through Quikteller</b></p>
-                                                            <p>
-                                                                <!--Snippet provided by Interswitch starts here--->
-                                                                <em><small><a class="quickteller-checkout-anchor" id="99401" style="text-align:left;">payment button will appear here shortly...</a></small></em>
-                                                                <script type="text/javascript">
-                                                                    var QTCheckout = QTCheckout || {};
-                                                                    var testMode = true;
-                                                                    var baseUrl = "";
-                                                                    var reqRef = '{{time()}}'
-                                                                    QTCheckout.paymentItems = QTCheckout.paymentItems || [];
-                                                                    QTCheckout.paymentItems.push({
-                                                                        paymentCode: 99401,
-                                                                        extraData: {
-                                                                            amount: "25000",
-                                                                            buttonSize: "large",
-                                                                            customerId: "12345",
-                                                                            mobileNumber: "08170574789",
-                                                                            emailAddress: "infinitypaul@live.com",
-                                                                            redirectUrl: "Default",
-                                                                            requestReference: reqRef
-                                                                        }
-                                                                    });
-                                                                    if (testMode == true) baseUrl = "https://pwq.sandbox.interswitchng.com/scripts/quickteller-checkout-min.js?v=";
-                                                                    else baseUrl = "https://paywith.quickteller.com/scripts/quickteller-checkout-min.js?v=";
-                                                                    if (!QTCheckout.qtScript) {
-                                                                        var qtScript = document.createElement('script');
-                                                                        qtScript.type = 'text/javascript';
-                                                                        qtScript.async = true;
-                                                                        qtScript.src = baseUrl + new Date().getDay();
-                                                                        var s = document.getElementsByTagName('script')[0];
-                                                                        s.parentNode.insertBefore(qtScript, s);
-                                                                        QTCheckout.qtScript = qtScript;
+                                                    <div class="panel-body">
+                                                        <p class="text 1"><b>Support through Quickteller</b></p>
+                                                        <p>
+                                                            <!--Snippet provided by Interswitch starts here--->
+                                                            <em><small><a class="quickteller-checkout-anchor" id="99401" style="text-align:left;">payment button will appear here shortly...</a></small></em>
+                                                            <script type="text/javascript">
+                                                                var QTCheckout = QTCheckout || {};
+                                                                var testMode = true;
+                                                                var baseUrl = "";
+                                                                var reqRef = '{{time()}}'
+                                                                QTCheckout.paymentItems = QTCheckout.paymentItems || [];
+                                                                QTCheckout.paymentItems.push({
+                                                                    paymentCode: 99401,
+                                                                    extraData: {
+                                                                        amount: "25000",
+                                                                        buttonSize: "large",
+                                                                        customerId: "12345",
+                                                                        mobileNumber: "08170574789",
+                                                                        emailAddress: "infinitypaul@live.com",
+                                                                        redirectUrl: "Default",
+                                                                        requestReference: reqRef
                                                                     }
-                                                                    else if (QTCheckout.buildPaymentItemsUI) {
-                                                                        QTCheckout.buildPaymentItemsUI();
-                                                                    }
+                                                                });
+                                                                if (testMode == true) baseUrl = "https://pwq.sandbox.interswitchng.com/scripts/quickteller-checkout-min.js?v=";
+                                                                else baseUrl = "https://paywith.quickteller.com/scripts/quickteller-checkout-min.js?v=";
+                                                                if (!QTCheckout.qtScript) {
+                                                                    var qtScript = document.createElement('script');
+                                                                    qtScript.type = 'text/javascript';
+                                                                    qtScript.async = true;
+                                                                    qtScript.src = baseUrl + new Date().getDay();
+                                                                    var s = document.getElementsByTagName('script')[0];
+                                                                    s.parentNode.insertBefore(qtScript, s);
+                                                                    QTCheckout.qtScript = qtScript;
+                                                                }
+                                                                else if (QTCheckout.buildPaymentItemsUI) {
+                                                                    QTCheckout.buildPaymentItemsUI();
+                                                                }
 
-                                                                </script>
-                                                                <!--Snippet provided by Interswitch ends here -->
-                                                            </p>
-                                                        </div>
+                                                            </script>
+                                                            <!--Snippet provided by Interswitch ends here -->
+                                                        </p>
                                                     </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-3" class="collapsed" aria-expanded="false">
-                                                                SUPPORT THROUGH US
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree-3" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <p class="text 1"><b>Let us make payments for you</b></p>
-                                                            <p>Payments can be made at any paga collection centre... <a href="#">click here</a> to find out the closest paga centre to you.<br/> To do this, kindly download the account information above, print it out and take it to your paga centre alongsode your cash</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h4 class="panel-title">
-                                                            <a data-toggle="collapse" data-parent="#accordion-test-2" href="#collapseThree-3" class="collapsed" aria-expanded="false">
-                                                                SUPPORT BY GOING TO THE BANK
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseThree-3" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <p class="text 1"><b>Let us make payments for you</b></p>
-                                                            <p>Payments can be made at any paga collection centre... <a href="#">click here</a> to find out the closest paga centre to you.<br/> To do this, kindly download the account information above, print it out and take it to your paga centre alongsode your cash</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><br/> 
+                                                </div><br/>
                                             <div class="form-group">
                                                 <div class="col-sm-12">
                                                     <!-- <div>
