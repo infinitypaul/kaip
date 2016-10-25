@@ -175,7 +175,8 @@
                         <div class="form-group">
                             <div class="col-sm-12 col-md-6 {{ $errors->has('dob') ? ' has-error' : '' }}">
                                 <label class="control-label">Date Of Birth</label>
-                                <input id="dobfield" name="dob" class="required form-control" aria-required="true" type="date" placeholder="Date of Birth" data-mask="99/99/9999" value="{{ old('dob') }}">
+                                <input id="dobfield" name="dob" class="required form-control" aria-required="true" type="text" placeholder="Date of Birth" data-mask="99/99/9999" value="{{ old('dob') }}">
+                                <span class="font-13 text-muted">mm/dd/yyyy</span>
 
                                 <!-- <div class="input-group">
                                     <input name="dob" type="text" class="required form-control" placeholder="mm/dd/yyyy" id="dobfield" value="{{ old('dob') }}">
