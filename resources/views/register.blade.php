@@ -10,9 +10,9 @@
 
     <title>MLF | Register</title>
 
-    <!-- Plugins css -->
-    <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+      <!-- Plugins css -->
+<!--     <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"> -->
     <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -65,9 +65,9 @@
             {{ csrf_field() }}
             <div id="rootwizard" class="pull-in">
                 <ul>
-                    <li><a href="#first" style=" pointer-events: none; cursor: default;" data-toggle="tab" disabled>BASIC DETAILS</a></li>
-                    <li><a href="#second" style=" pointer-events: none; cursor: default;" data-toggle="tab">BANK DETAILS</a></li>
-                    <li><a href="#third" style=" pointer-events: none; cursor: default;" data-toggle="tab">REGISTRATION MODE</a></li>
+                    <li><a href="#first" style=" pointer-events: none; cursor: default;" data-toggle="tab" disabled><strong>BASIC DETAILS</strong></a></li>
+                    <li><a href="#second" style=" pointer-events: none; cursor: default;" data-toggle="tab"><strong>BANK DETAILS</strong></a></li>
+                    <li><a href="#third" style=" pointer-events: none; cursor: default;" data-toggle="tab"><strong>REGISTRATION MODE</strong></a></li>
                 </ul>
                 <div class="tab-content m-b-0 bx-s-0">
                     <div class="tab-pane fade" id="first">
@@ -107,8 +107,9 @@
                                 @endif
                             </div>
                             <div class="col-md-3 col-sm-6 controls{{ $errors->has('PhoneNumber') ? ' has-error' : '' }}">
-                                <input id="phonenofield" name="PhoneNumber" class="required form-control" aria-required="true" type="number" placeholder="Phone No" value="{{ old('PhoneNumber') }}">
+                                <input id="phonenofield" name="PhoneNumber" class="required form-control" aria-required="true" type="text" placeholder="Phone Number" data-mask="99999999999"  value="{{ old('PhoneNumber') }}">
                                 <i class="md md-phone form-control-feedback l-h-34"></i>
+                                <span class="font-13 text-muted">Phone No: 999 9999-9999</span>
                                 @if ($errors->has('PhoneNumber'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('PhoneNumber') }}</strong>
@@ -134,6 +135,7 @@
                             <div class="col-sm-12 col-md-6 controls{{ $errors->has('Password') ? ' has-error' : '' }}">
                                 <input id="passwdfield" name="Password" class="required form-control" aria-required="true" type="password" placeholder="Password">
                                 <i class="md md-vpn-key form-control-feedback l-h-34"></i>
+                                <span class="font-13 text-muted text-inverse">Minimum of six characters</span>
                                 @if ($errors->has('Password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Password') }}</strong>
@@ -172,12 +174,14 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-6 form-inline controls{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <div class="col-sm-12 col-md-6 {{ $errors->has('dob') ? ' has-error' : '' }}">
                                 <label class="control-label">Date Of Birth</label>
-                                <div class="input-group">
+                                <input id="dobfield" name="dob" class="required form-control" aria-required="true" type="date" placeholder="Date of Birth" data-mask="99/99/9999" value="{{ old('dob') }}">
+
+                                <!-- <div class="input-group">
                                     <input name="dob" type="text" class="required form-control" placeholder="mm/dd/yyyy" id="dobfield" value="{{ old('dob') }}">
                                     <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
-                                </div>
+                                </div> -->
                                 <!-- <i class="md md-alarm-on form-control-feedback l-h-34"></i> -->
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
@@ -185,6 +189,7 @@
                                     </span>
                                 @endif
                             </div>
+
 
                             <div class="col-sm-6 form-inline controls{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label>Gender: </label>
@@ -233,7 +238,8 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12 controls{{ $errors->has('nokpn') ? ' has-error' : '' }}">
-                                        <input id="Nxtphonenofield" name="nokpn" class="required form-control" aria-required="true" type="number" placeholder="Phone No" value="{{ old('nokpn') }}">
+                                        <input id="Nxtphonenofield" name="nokpn" class="required form-control" aria-required="true" type="text" placeholder="Phone Number" data-mask="99999999999" value="{{ old('nokpn') }}">
+                                        <span class="font-13 text-muted">Phone No: 999 9999-9999</span>
                                         <i class="md md-phone form-control-feedback l-h-34"></i>
                                         @if ($errors->has('nokpn'))
                                             <span class="help-block">
@@ -261,14 +267,40 @@
                     <div class="tab-pane fade" id="second">
 
                         <div class="form-group">
-                            <div class="col-md-12 controls{{ $errors->has('bn') ? ' has-error' : '' }}">
-                                <input id="bnknamefield" name="bn" class="required form-control" aria-required="true" type="text" required="" placeholder="Bank Name" value="{{ old('bn') }}">
-                                <i class="md md-account-balance form-control-feedback l-h-34"></i>
-                                @if ($errors->has('bn'))
+                            <div class="col-sm-12 col-md-12 controls">
+                                <!-- <input class="required form-control" type="date" required="" placeholder="Area Of Interest"> -->
+                                <div class="controls{{ $errors->has('aoi') ? ' has-error' : '' }}">
+                                    <select class="required form-control" id="bnknamefield" name="bn" >
+                                        <option>Select Bank</option>
+                                        <option>Access Bank Plc</option>
+                                        <option>Citibank Nigeria Limited</option>
+                                        <option>Diamond Bank Plc</option>
+                                        <option>Ecobank Nigeria Plc</option>
+                                        <option>Enterprise Bank</option>
+                                        <option>Fidelity Bank Plc</option>
+                                        <option>First City Monument Bank Plc</option>
+                                        <option>Guaranty Trust Bank Plc</option>
+                                        <option>Heritage Banking Company Ltd</option>
+                                        <option>Key Stone Bank</option>
+                                        <option>MainStreet Bank</option>
+                                        <option>Skye Bank Plc</option>
+                                        <option>Stanbic IBTC Bank Ltd.</option>
+                                        <option>Standard Chartered Bank Nigeria Ltd</option>
+                                        <option>Sterling Bank Plc</option>
+                                        <option>SunTrust Bank Nigeria Limited</option>
+                                        <option>Union Bank of Nigeria Plc</option>
+                                        <option>United Bank For Africa Plc</option>
+                                        <option>Unity Bank Plc</option>
+                                        <option>Wema Bank Plc</option>
+                                        <option>Zenith Bank Plc</option>
+                                    </select>
+                                   @if ($errors->has('bn'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('bn') }}</strong>
                                     </span>
                                 @endif
+                                </div>
+                                <i class="md md-account-balance form-control-feedback l-h-34"></i>
                             </div>
                         </div>
 
@@ -283,8 +315,9 @@
                                 @endif
                             </div>
                             <div class="col-sm-12 col-md-6 controls{{ $errors->has('ban') ? ' has-error' : '' }}">
-                                <input id="bnkaccnofield" name="ban" class="required form-control" aria-required="true" type="number" required="" placeholder="Bank Account Number" value="{{ old('ban') }}">
+                                <input id="bnkaccnofield" name="ban" class="required form-control" aria-required="true" type="text" required="" placeholder="Bank Acc No" data-mask="9999999999" value="{{ old('ban') }}">
                                 <i class="md md-credit-card form-control-feedback l-h-34"></i>
+                                <span class="font-13 text-muted">Bank Account No: 123 4567 890</span>
                                 @if ($errors->has('ban'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('ban') }}</strong>
@@ -313,7 +346,7 @@
                         </div>
                         <div class="form-group" id="rcing">
                             <div class="col-md-12{{ $errors->has('rc') ? ' has-error' : '' }}">
-                                <input class="required form-control input-sm" name="rc" type="text" required=""
+                                <input class="required form-control input-sm" name="rc" type="text"
                                        placeholder="Referral Code" id="rc" value="{{ old('rc') }}">
                                 <i class="md md-alarm-on form-control-feedback l-h-34"></i>
                                 @if ($errors->has('rc'))
@@ -332,10 +365,10 @@
                                     <div class="col-md-12 m-b-15">
                                         <label class="control-label">Registration Category</label>
                                         <div class="controls">
-                                            <select class="form-control" id="cate" onchange="changer2();">
+                                            <select name="regcat" class="form-control" id="cate" onchange="changer2();">
                                                 <option value="">Select Category</option>
-                                                <option value="free">Free Fall System</option>
-                                                <option value="help">Help System</option>
+                                                <option value="0">5 Million</option>
+                                                <option value="1">10 Million</option>
                                             </select>
                                         </div>
                                     </div>
@@ -413,6 +446,7 @@
 
 <script src="assets/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -484,10 +518,6 @@
                     required: true,
                     minlength: 3
                 },
-                bnknamefield: {
-                    required: true,
-                    minlength: 3
-                },
                 bnkaccnamefield: {
                     required: true,
                     minlength: 3
@@ -513,7 +543,6 @@
     });
 
 </script>
-
 <Script>
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
@@ -568,13 +597,15 @@
         });
     }
 </Script>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
     // Date Picker
     jQuery('#datepicker').datepicker();
     jQuery('#dobfield').datepicker({
         autoclose: true,
         todayHighlight: true
     });
-</script>
+</script> -->
+
 </body>
 </html>
