@@ -145,6 +145,15 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="col-sm-12 col-md-6 controls{{ $errors->has('RePassword') ? ' has-error' : ''}}">
+                                <input id="passwdfield" name="RePassword" class="required form-control" aria-required="true" type="password" placeholder="Retype Password">
+                                <i class="md md-vpn-key form-control-feedback l-h-34"></i>
+                                @if ($errors->has('RePassword'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('RePassword') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <div class="col-sm-12 col-md-6 controls">
                                 <!-- <input class="required form-control" type="date" required="" placeholder="Area Of Interest"> -->
                                 <div class="controls{{ $errors->has('aoi') ? ' has-error' : '' }}">
@@ -160,16 +169,6 @@
                                     @endif
                                 </div>
                                 <i class="fa fa-building-o form-control-feedback l-h-34"></i>
-                            </div>
-                            <div class="col-sm-12 col-md-6 controls{{ $errors->has('RePassword') ? ' has-error' : ''
-                            }}">
-                                <input id="passwdfield" name="RePassword" class="required form-control" aria-required="true" type="password" placeholder="Retype Password">
-                                <i class="md md-vpn-key form-control-feedback l-h-34"></i>
-                                @if ($errors->has('RePassword'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('RePassword') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
