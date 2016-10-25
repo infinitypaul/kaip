@@ -307,7 +307,7 @@
                         </div>
                         <div class="form-group" id="rcing">
                             <div class="col-md-12{{ $errors->has('rc') ? ' has-error' : '' }}">
-                                <input class="required form-control input-sm" name="rc" type="text" required=""
+                                <input class="required form-control input-sm" name="rc" type="text"
                                        placeholder="Referral Code" id="rc" value="{{ old('rc') }}">
                                 <i class="md md-alarm-on form-control-feedback l-h-34"></i>
                                 @if ($errors->has('rc'))
@@ -326,10 +326,10 @@
                                     <div class="col-md-12 m-b-15">
                                         <label class="control-label">Registration Category</label>
                                         <div class="controls">
-                                            <select class="form-control" id="cate" onchange="changer2();">
+                                            <select name="regcat" class="form-control" id="cate" onchange="changer2();">
                                                 <option value="">Select Category</option>
-                                                <option value="free">Free Fall System</option>
-                                                <option value="help">Help System</option>
+                                                <option value="0">5 Million</option>
+                                                <option value="1">10 Million</option>
                                             </select>
                                         </div>
                                     </div>

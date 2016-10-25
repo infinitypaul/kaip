@@ -43,7 +43,7 @@ class Registration extends FormRequest
             'an' => 'required',
             'ban' => 'required|numeric|unique:users,account_no|min:10',
             'refer' => 'required',
-            'rc' => 'required',
+            'regcat' => 'required',
         ];
     }
 
@@ -69,7 +69,8 @@ class Registration extends FormRequest
             'an.required'  => 'Account Name is required',
             'ban.required' => 'Account Number Is Required',
             'refer.required' => 'How did you know about us',
-            'rc.required' => 'We need your refer code',
+            'regcat.required' => 'You Must Select an Option',
+            'rc.numeric' => 'Your code must be a number',
             'ban.unique' => 'Account No Already Taken'
         ];
     }

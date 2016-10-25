@@ -60,19 +60,19 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($notification as $notify)
-                                            @foreach($notify->user as $virtual)
+
+                                            @foreach($downline as $virtual)
                                         <tr>
-                                            <td>{{ $user->user_code }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->created_at->diffForHumans() }}</td>
+                                            <td>{{ $virtual->user_code }}</td>
+                                            <td>{{ $virtual->name }}</td>
+                                            <td>{{ $virtual->created_at->diffForHumans() }}</td>
                                             <td>Level <?php
-                                                AllFunction::MyLevel($counto) ?></td>
+                                                AllFunction::MyLevel($mycount) ?></td>
                                             <td><span class="label label-success">Active</span></td>
-                                            <td>{{ $user->mobile }}</td>
+                                            <td>{{ $virtual->mobile }}</td>
                                         </tr>
                                                 @endforeach
-                                        @endforeach
+
 
                                         </tbody>
                                     </table>

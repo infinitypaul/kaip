@@ -61,4 +61,6 @@ Route::post('register', ['as' => 'register', 'uses' => 'UserController@store']);
 Route::get('smscode/{id}', ['as' => 'sms', 'uses' => 'HomeController@sms']);
 Route::get('autocomplete', 'HomeController@Autocomplete');
 Route::get('complete', 'HomeController@Complete');
+Route::get('test', 'HomeController@created');
+Route::get('testing', 'HomeController@testing');
 Route::resource('dashboard', 'UserController');

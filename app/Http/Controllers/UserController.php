@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Code;
 use App\Http\Requests\Registration;
 use App\Http\Requests\UpdateProfile;
+use App\Mail\WelcomeMail;
+use App\Pool;
 use App\Referral;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,12 +36,14 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $downline = User::where('refer','=', $user->user_code)->where('active','=', 1)->get();
+       // dd($downline);
         $mylevel = $user->refer()->first()->getDescendants();
         $notification = $user->refer()->first()->getDescendants(7);
         $mycount = $mylevel->count();
 
         //echo $level = $notification->count();
-        return view('home', compact('user', 'mycount', 'notification'));
+        return view('home', compact('user', 'mycount', 'notification', 'downline'));
     }
 
     /**
@@ -60,7 +65,49 @@ class UserController extends Controller
     public function store(Registration $request)
     {
         if (Code::where('mobile_no', '=', $request->PhoneNumber)->where('code', '=', $request->Code)->exists()) {
-            if (User::where('user_code', '=', $request->rc)->exists()) {
+            if($request->refer == 1 ){
+                if ($request->has('aoi')) {
+                    if (User::where('user_code', '=', $request->rc)->exists()) {
+                        $member = User::create(array(
+                            'firstname' => $request->FirstName,
+                            'lastname' => $request->LastName,
+                            'aoi' => $request->aoi,
+                            'dob' => $request->dob,
+                            'gender' => $request->gender,
+                            'email' => $request->Email,
+                            'mobile' => $request->PhoneNumber,
+                            'password' => bcrypt($request->Password),
+                            'nok_fn' => $request->nokfn,
+                            'nok_ln' => $request->nokln,
+                            'nok_pn' => $request->nokpn,
+                            'nok_add' => $request->nokadd,
+                            'bank_name' => $request->bn,
+                            'bank_account' => $request->an,
+                            'account_no' => $request->ban,
+                            'whorefer' => $request->refer,
+                            'refer' => $request->rc,
+                            'ip' => $request->ip(),
+                            'category' => $request->regcat
+                        ));
+                        $single = User::find($member->id);
+                        $single->user_code = AllFunction::getToken(6, $member->id);
+                        $single->Save();
+                        $referby = User::where('user_code', '=', $single->refer)->first();
+                        $descendant = $referby->refer()->first()->getDescendantsAndSelf()->count();
+
+                        if ($descendant > 3) {
+                            // dd($descendant);
+                            Pool::create(array(
+                                'user_id' => $member->id
+                            ));
+                        }
+
+                    } else {
+                        $request->session()->flash('error', 'Wrong Referral Code');
+                        return redirect('register')->withInput();
+                    }
+                }
+            } else {
                 $member = User::create(array(
                     'firstname' => $request->FirstName,
                     'lastname' => $request->LastName,
@@ -77,33 +124,43 @@ class UserController extends Controller
                     'bank_name' => $request->bn,
                     'bank_account' => $request->an,
                     'account_no' => $request->ban,
-                    'whorefer' => $request->refer,
                     'refer' => $request->rc,
-                    'ip' => $request->ip()
+                    'ip' => $request->ip(),
+                    'category' => $request->regcat
                 ));
                 $single = User::find($member->id);
                 $single->user_code = AllFunction::getToken(6,$member->id);
                 $single->Save();
-                $request->session()->flash('success', 'You have been Registered Successfully, Please Fulfil Your Obligation To Start Getting Paid');
-                $credentials = array(
-                    'email' => $request->Email,
-                    'password' => $request->Password
-                );
-
-                if (Auth::attempt($credentials)) {
-                    return Redirect::to('dashboard');
-                } else {
-                    return Redirect::to('login');
-                }
-            } else {
-                $request->session()->flash('error', 'Wrong Referral Code');
-                return redirect('register')->withInput();
+                //dd('stop');
+                Pool::create(array(
+                    'user_id' => $member->id
+                ));
             }
+
+            $when = Carbon::now()->addMinutes(5);
+           // Mail::to($single->email)->later($when, new WelcomeMail($single));
+            Mail::to($single->email)->send( new WelcomeMail($single));
+
+
+            $request->session()->flash('success', 'You have been Registered Successfully, Please Fulfil Your Obligation To Start Getting Paid');
+
+           // Mail::to($single)->later(new WelcomeMail($single));
+            $credentials = array(
+                'email' => $request->Email,
+                'password' => $request->Password
+            );
+
+            if (Auth::attempt($credentials)) {
+                //dd('heyi');
+                return Redirect::to('dashboard');
+            } else {
+                return Redirect::to('login');
+            }
+          //  dd('hey');
         } else {
             $request->session()->flash('error', 'Wrong Validation Code');
             return redirect('register')->withInput();
         }
-
 
     }
 
@@ -172,24 +229,41 @@ class UserController extends Controller
 
     public function verify(){
         $user = Auth::user();
-         $referby = User::where('user_code','=',$user->refer)->first();
-        $notification = $referby->refer()->first()->getDescendantsAndSelf(7);
-        $counted = $notification->count();
+        if(empty($user->refer)) {
+            return view('above', compact('user'));
+        }else {
+           // $referby = User::find(1);
+            $referby = User::where('user_code','=',$user->refer)->first();
+            $notification = $referby->refer()->first()->getAncestorsAndSelf();
+            $counted = $notification->count();
+            $descendant = $referby->refer()->first()->getDescendantsAndSelf()->count();
 //        foreach($notification as $notify) {
 //            dd($notify->getDescendants()->count());
 //        }
-        $dummy = array
-        (
-            array("12345",'2180',' Fidelity Bank', 'Francis', '1234567890', '3000'),
-            array("12345",'2180',' GT Bank', 'Ken', '1234567890', '3000'),
-            array("12345",'2180',' First Bank', 'Blessing', '1234567890', '3000'),
-            array("12345",'2180',' FCM Bank', 'Dele', '1234567890', '3000'),
-            array("12345",'2180',' Diamond Bank', 'Bola', '1234567890', '3000'),
-            array("12345",'2180',' Union Bank', 'Amire', '1234567890', '3000'),
-        );
+            $dummy = array
+            (
+                array("12345",'2180',' Fidelity Bank', 'Francis', '1234567890', '3000'),
+                array("12345",'2180',' GT Bank', 'Ken', '1234567890', '3000'),
+                array("12345",'2180',' First Bank', 'Blessing', '1234567890', '3000'),
+                array("12345",'2180',' FCM Bank', 'Dele', '1234567890', '3000'),
+                array("12345",'2180',' Diamond Bank', 'Bola', '1234567890', '3000'),
+                array("12345",'2180',' Union Bank', 'Amire', '1234567890', '3000'),
+            );
+           // dd($descendant);
+            if($descendant <= 3 ){
+                return view('submit', compact('user', 'notification', 'counted', 'dummy'));
+            } else {
+                return view('above', compact('user'));
+            }
+        }
 
-        return view('submit', compact('user', 'notification', 'counted', 'dummy'));
+
+
+
     }
+
+
+
 
     public function upload(Request $request){
         $rules = array(

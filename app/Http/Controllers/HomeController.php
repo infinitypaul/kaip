@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Code;
+use App\Jobs\SendSMS;
+use App\Mail\WelcomeMail;
+use App\Referral;
 use App\User;
 use Auth;
 use Carbon\Carbon;
@@ -12,6 +15,7 @@ use App\Http\Requests;
 
 use AllFunction;
 use Illuminate\Support\Facades\Input;
+use Mail;
 use Redirect;
 use Response;
 
@@ -53,7 +57,8 @@ class HomeController extends Controller
                     $code->Save();
                     $message = 'Your Verification Code is '.$smscode;
                     echo 'Verification Code Has Been Sent To Your Mobile Phone';
-                    AllFunction::Sms(substr_replace($id, '234', 0, 1), $message);
+                    dispatch(new SendSMS($message, $id));
+                   // AllFunction::Sms(substr_replace($id, '234', 0, 1), $message);
                 } else{
 
                     $end = Carbon::parse($code->updated_at);
@@ -67,7 +72,8 @@ class HomeController extends Controller
                         $code->Save();
                         $message = 'Your Verification Code is '.$code->code;
                         echo 'Verification Code Has Been Sent To Your Mobile Phone';
-                        AllFunction::Sms(substr_replace($id, '234', 0, 1), $message);
+                        dispatch(new SendSMS($message, $id));
+                       // AllFunction::Sms(substr_replace($id, '234', 0, 1), $message);
                     }
                 }
 
@@ -100,5 +106,28 @@ class HomeController extends Controller
         return Redirect::to('login');
     }
 
+    public function created(){
+//        $child = Referral::find(18);
+//        $child->delete();
+        $real = Auth::user();
+        $user = User::find(35);
+        $root = Referral::find(17);
+        $child2 = Referral::create(['name' => $user->user_code]);
+        $child2->makeChildOf($root);
+        $real->active = 1;
+        $real->Save();
+        $user->refer()->attach($child2);
+////        $user = User::find(18);
+//        $root = Referral::create(['name' => $user->user_code]);
+//        $user->refer()->attach($root);
+    }
+
+
+    public function testing(){
+      // $user = User::find(3);
+       // Mail::to($user)->send(new WelcomeMail($user));
+
+        dispatch(new SendSMS('hey', '08170574789'));
+    }
 
 }

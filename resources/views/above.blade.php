@@ -38,7 +38,7 @@
         <div class="wrapper-page" style="width:60%;">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="page-title text-white"><strong>WELCOME BACK, {{ $user->name }} {{ $user->user_code }}</strong></h4>
+                    <h4 class="page-title text-white"><strong>WELCOME BACK, {{ $user->name }}</strong></h4>
                 </div>
                 <div class="col-md-6">
                     <div class="clearfix pull-right m-b-15">
@@ -59,65 +59,7 @@
                                     <div class="form-group clearfix">
                                         <div class="col-lg-12">
                                             <p class="lead text-center">Support directly into the below 7 accounts. <br> </p>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-condensed table-responsive m-0">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>FAMILY ID</th>
-                                                            <th>VIRTUAL RANK</th>
-                                                            <th>BANK NAME</th>
-                                                            <th>ACC NAME</th>
-                                                            <th>ACC NUMBER</th>
-                                                            <th>AMOUNT</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <?php  $line = 7 - $counted ?>
-                                                    @for ($row = 0; $row < $line; $row++)
 
-                                                    <tr>
-                                                        @for ($col = 0; $col < $line; $col++)
-                                                        <td >{{ $dummy[$row][$col] }}</td>
-                                                        @endfor
-
-                                                    </tr>
-
-                                                    @endfor
-
-                                                   @foreach($notification as $notify)
-                                                       <?php $counto = $notify->getDescendants()->count(); ?>
-                                                       @foreach($notify->user as $virtual)
-                                                        <tr>
-                                                            <th scope="row">{{$virtual->user_code}}</th>
-                                                            <td>Support <?php
-                                                                AllFunction::Level($counto, $virtual->gender) ?></td>
-                                                            <td>{{$virtual->bank_account}}</td>
-                                                            <td>{{$virtual->bank_name}}</td>
-                                                            <td>{{$virtual->account_no}}</td>
-                                                            <td>&#8358;3000</td>
-                                                        </tr>
-                                                       @endforeach
-                                                   @endforeach
-
-                                                        <tr>
-                                                            <th scope="row">1234</th>
-                                                            <td>Support Family Foundation</td>
-                                                            <td>GT Bank</td>
-                                                            <td>My Liberty Family</td>
-                                                            <td>010302344</td>
-                                                            <td>&#8358;4000</td>
-                                                        </tr>
-                                                        <tr class="bg-dark">
-                                                            <th scope="row">TOTAL</th>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td>&#8358;25,000</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
                                             <br/>
 
                                             <div class="row form-group text-center m-t-15">
@@ -152,46 +94,38 @@
                                                     </div>
                                                     <div id="collapseThree-2" class="panel-collapse collapse">
                                                         <div class="panel-body">
-                                                            <p class="text 1"><b>Support through Quikteller</b></p>
-                                                            <p>
-                                                                <!--Snippet provided by Interswitch starts here--->
-                                                                <em><small><a class="quickteller-checkout-anchor" id="99401" style="text-align:left;">payment button will appear here shortly...</a></small></em>
-                                                                <script type="text/javascript">
-                                                                    var QTCheckout = QTCheckout || {};
-                                                                    var testMode = true;
-                                                                    var baseUrl = "";
-                                                                    var reqRef = '{{time()}}'
-                                                                    QTCheckout.paymentItems = QTCheckout.paymentItems || [];
-                                                                    QTCheckout.paymentItems.push({
-                                                                        paymentCode: 99401,
-                                                                        extraData: {
-                                                                            amount: "25000",
-                                                                            buttonSize: "large",
-                                                                            customerId: "12345",
-                                                                            mobileNumber: "08170574789",
-                                                                            emailAddress: "infinitypaul@live.com",
-                                                                            redirectUrl: "Default",
-                                                                            requestReference: reqRef
-                                                                        }
-                                                                    });
-                                                                    if (testMode == true) baseUrl = "https://pwq.sandbox.interswitchng.com/scripts/quickteller-checkout-min.js?v=";
-                                                                    else baseUrl = "https://paywith.quickteller.com/scripts/quickteller-checkout-min.js?v=";
-                                                                    if (!QTCheckout.qtScript) {
-                                                                        var qtScript = document.createElement('script');
-                                                                        qtScript.type = 'text/javascript';
-                                                                        qtScript.async = true;
-                                                                        qtScript.src = baseUrl + new Date().getDay();
-                                                                        var s = document.getElementsByTagName('script')[0];
-                                                                        s.parentNode.insertBefore(qtScript, s);
-                                                                        QTCheckout.qtScript = qtScript;
-                                                                    }
-                                                                    else if (QTCheckout.buildPaymentItemsUI) {
-                                                                        QTCheckout.buildPaymentItemsUI();
-                                                                    }
+                                                            {{--<p class="text 1"><b>Support through Quikteller</b></p>--}}
+                                                            <p><!--Snippet provided by Interswitch starts here--->    <em><small><a class="quickteller-checkout-anchor" id="99401" style="text-align:left;">payment button will appear here shortly...</a></small></em>
+<script type="text/javascript">
+    var QTCheckout = QTCheckout || {};
+ var testMode = true;
+    var baseUrl = "";
+    QTCheckout.paymentItems = QTCheckout.paymentItems || [];
+ QTCheckout.paymentItems.push({
+     paymentCode: '99401',
+     extraData: {
+         amount: '25000',
+         buttonSize: 'large',
+         customerId: '12345',
+         mobileNumber: '2348170574789',
+         emailAddress: 'infinitypaul@live.com',
+         redirectUrl: 'http://localhost/mlf/public/verify' ,
+         requestReference:'{{ time() }}'
+     }
+ });
+    if (testMode == true) baseUrl =  "https://stageserv.interswitchng.com/quicktellercheckout/scripts/quickteller-checkout-min.js?v=";
+    else baseUrl = "https://paywith.quickteller.com/scripts/quickteller-checkout-min.js?v=";         if (!QTCheckout.qtScript) {
+        var qtScript = document.createElement('script');
+        qtScript.type = 'text/javascript';
+        qtScript.async = true;
+        qtScript.src = baseUrl + new Date().getDay();
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(qtScript, s);
+        QTCheckout.qtScript = qtScript;          }
+    else if (QTCheckout.buildPaymentItemsUI)
+    {              QTCheckout.buildPaymentItemsUI();          }
+</script>
 
-                                                                </script>
-                                                                <!--Snippet provided by Interswitch ends here -->
-                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
