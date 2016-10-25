@@ -42,7 +42,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" name="Code"  type="text" required="" placeholder="UserCode">
+                        <input class="form-control" name="Code"  type="text" required="" placeholder="Family ID">
                         <i class="md md-account-circle form-control-feedback l-h-34"></i>
                     </div>
                 </div>

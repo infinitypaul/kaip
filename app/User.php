@@ -26,7 +26,7 @@ class User extends Authenticatable
     ];
 
 
-    public function refer() {
+    public function referral() {
         return $this->belongsToMany('App\Referral');
     }
 

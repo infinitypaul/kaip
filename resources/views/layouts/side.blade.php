@@ -44,20 +44,20 @@
         </div>
     </div>
 
-    <div class="panel panel-color panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">Wallet</h3>
-        </div>
-        <div class="panel-body">
-            <div class="widget-simple-chart text-right card-box" style="border: none;">
-                <div class="circliful-chart" data-dimension="90" data-text="0%" data-width="5" data-fontsize="14" data-percent="{{auth()->user()->wallet}}" data-fgcolor="#c93200" data-bgcolor="#ebeff2"></div>
-                <h3 class="text-inverse">&#8358;<span class="counter">{{ auth()->user()->wallet }}</span></h3>
-                <p class="text-primary">Total paid amount</p>
-            </div>
-        </div>
-        <div class="panel-footer text-right">
-            <a href="#" style="color:#154604;"><b>VIEW WALLET</b></a>
-        </div>
-    </div>
+    {{--<div class="panel panel-color panel-primary">--}}
+        {{--<div class="panel-heading">--}}
+            {{--<h3 class="panel-title">Wallet</h3>--}}
+        {{--</div>--}}
+        {{--<div class="panel-body">--}}
+            {{--<div class="widget-simple-chart text-right card-box" style="border: none;">--}}
+                {{--<div class="circliful-chart" data-dimension="90" data-text="0%" data-width="5" data-fontsize="14" data-percent="{{auth()->user()->wallet}}" data-fgcolor="#c93200" data-bgcolor="#ebeff2"></div>--}}
+                {{--<h3 class="text-inverse">&#8358;<span class="counter">{{ auth()->user()->wallet }}</span></h3>--}}
+                {{--<p class="text-primary">Total paid amount</p>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="panel-footer text-right">--}}
+            {{--<a href="#" style="color:#154604;"><b>VIEW WALLET</b></a>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 </div>

@@ -70,7 +70,7 @@ class HomeController extends Controller
                     } else {
                         $code->howmany += 1;
                         $code->Save();
-                        $message = 'Your Verification Code is '.$code->code;
+                        $message = $code->code;
                         echo 'Verification Code Has Been Sent To Your Mobile Phone';
                         dispatch(new SendSMS($message, $id));
                        // AllFunction::Sms(substr_replace($id, '234', 0, 1), $message);
@@ -109,14 +109,20 @@ class HomeController extends Controller
     public function created(){
 //        $child = Referral::find(18);
 //        $child->delete();
-        $real = Auth::user();
-        $user = User::find(35);
-        $root = Referral::find(17);
-        $child2 = Referral::create(['name' => $user->user_code]);
-        $child2->makeChildOf($root);
-        $real->active = 1;
-        $real->Save();
-        $user->refer()->attach($child2);
+
+
+//        $real = Auth::user();
+//        $user = User::find(35);
+//        $root = Referral::find(17);
+//        $child2 = Referral::create(['name' => $user->user_code]);
+//        $child2->makeChildOf($root);
+//        $real->active = 1;
+//        $real->Save();
+//        $user->referral()->attach($child2);
+
+        echo  $formatted_date = Carbon::now()->addDay(1)->toDateTimeString();
+
+
 ////        $user = User::find(18);
 //        $root = Referral::create(['name' => $user->user_code]);
 //        $user->refer()->attach($root);
@@ -124,10 +130,22 @@ class HomeController extends Controller
 
 
     public function testing(){
-      // $user = User::find(3);
+       $user = User::find(18);
        // Mail::to($user)->send(new WelcomeMail($user));
+//return AllFunction::Sms('08170574789',"dont come");
+       // dispatch(new SendSMS('youralert is bla bla', '08170574789'));
+       // return $mylevel = $user->referral()->first()->getDescendantsAndSelf()->toHierarchy();
+        foreach($mylevel as $me){
+            echo $me->id;
+        }
+       // dd($mylevel);
+       // $tree = Referral::where('name', '=', 'Books')->first()->getDescendantsAndSelf()->toHierarchy();
+    }
 
-        dispatch(new SendSMS('hey', '08170574789'));
+
+    public function alluser(){
+        $users = User::all()->where('active', '0');
+        return view('approve', compact('users'));
     }
 
 }

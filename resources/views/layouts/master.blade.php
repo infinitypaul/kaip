@@ -183,15 +183,7 @@
 					<li class="has-submenu active">
 						<a href="#"><i class="md md-credit-card"></i><b>MY PAYOUTS</b></a>
 					</li>
-					<li class="has-submenu active">
-						<a href="#"><i class="md md-accessibility"></i><b>REQUEST HELP</b></a>
-					</li>
-					<li class="has-submenu active">
-						<a href="{{ action('UserController@GiveHelp') }}"><i class="md md-help"></i><b>GIVE HELP</b></a>
-					</li>
-					<li class="has-submenu active">
-						<a href="#"><i class="md md-perm-media"></i><b>RESOURCES</b></a>
-					</li>
+
 					<li class="has-submenu active">
 						<a href="{{ url('tickets') }}"><i class="md md-settings"></i><b>SUPPORT</b></a>
 					</li>

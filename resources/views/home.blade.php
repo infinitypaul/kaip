@@ -5,27 +5,39 @@
                     <h4 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Welcome Back, {{  AllFunction::Level($mycount, $user->gender) }}, {{ $user->name }}</strong></h4>
 
                     <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="widget-simple-chart text-right card-box">
                                 <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#154604" data-bgcolor="#ebeff2"></div>
                                 <h3 class="text-inverse counter"><strong>{{  AllFunction::MyLevel($mycount) }}</strong></h3>
                                 <p class="text-dark"><strong>CURRENT LEVEL</strong></p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="widget-simple-chart text-center card-box">
                                 <h3 class="text-inverse">&#8358;<span class="counter">0</span></h3>
                                 <p class="text-dark"><strong>TOTAL PAYOUTS</strong></p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <div class="card-box widget-icon">
                                 <div>
                                     <i class="md md-account-child text-primary"></i>
                                     <div class="wid-icon-info">
-                                        <p class="text-dark m-b-5 font-13 text-uppercase"><strong>NO OF FAMILY MEMBERS</strong></p>
+                                        <p class="text-dark m-b-5 font-13 text-uppercase"><strong>FAMILY COUNT</strong></p>
                                         <h4 class="m-t-0 m-b-5 text-inverse counter">{{ $mycount }}</h4>
-                                        <small class="text-danger"><b>{{ $mycount }}% Up</b></small>
+                                        {{--<small class="text-danger"><b>{{ $mycount }}% Up</b></small>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="card-box widget-icon">
+                                <div>
+                                    <i class="md md-account-child text-primary"></i>
+                                    <div class="wid-icon-info">
+                                        <p class="text-dark m-b-5 font-13 text-uppercase"><strong>WAITING</strong></p>
+                                        <h4 class="m-t-0 m-b-5 text-inverse counter">1</h4>
+                                        {{--<small class="text-danger"><b>{{ $mycount }}% Up</b></small>--}}
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +66,6 @@
                                             <th>User Code</th>
                                             <th>Member Name</th>
                                             <th>Reg Date</th>
-                                            <th>level</th>
                                             <th>Status</th>
                                             <th>Phone No</th>
                                         </tr>
@@ -66,9 +77,14 @@
                                             <td>{{ $virtual->user_code }}</td>
                                             <td>{{ $virtual->name }}</td>
                                             <td>{{ $virtual->created_at->diffForHumans() }}</td>
-                                            <td>Level <?php
-                                                AllFunction::MyLevel($mycount) ?></td>
-                                            <td><span class="label label-success">Active</span></td>
+
+                                            <td>
+                                                @if($virtual->active = 1)
+                                                <span class="label label-success">Active</span>
+                                            @else
+                                                    <span class="label label-danger">InActive</span>
+                                                @endif
+                                            </td>
                                             <td>{{ $virtual->mobile }}</td>
                                         </tr>
                                                 @endforeach

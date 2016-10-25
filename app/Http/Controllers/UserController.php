@@ -37,10 +37,20 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $downline = User::where('refer','=', $user->user_code)->where('active','=', 1)->get();
-       // dd($downline);
-        $mylevel = $user->refer()->first()->getDescendants();
-        $notification = $user->refer()->first()->getDescendants(7);
-        $mycount = $mylevel->count();
+        if(is_null($user->referral->first())) {
+            $mycount = 0;
+            return view('home', compact('user', 'mycount', 'notification', 'downline'));
+        } else {
+
+            $mylevel = $user->referral()->first()->getDescendants();
+            //$notification = $user->refer()->first()->getDescendants(7);
+
+            $mycount = $mylevel->count();
+            foreach ($user->referral as $role) {
+
+            }
+        }
+
 
         //echo $level = $notification->count();
         return view('home', compact('user', 'mycount', 'notification', 'downline'));
@@ -66,7 +76,7 @@ class UserController extends Controller
     {
         if (Code::where('mobile_no', '=', $request->PhoneNumber)->where('code', '=', $request->Code)->exists()) {
             if($request->refer == 1 ){
-                if ($request->has('aoi')) {
+                if ($request->has('rc')) {
                     if (User::where('user_code', '=', $request->rc)->exists()) {
                         $member = User::create(array(
                             'firstname' => $request->FirstName,
@@ -93,12 +103,14 @@ class UserController extends Controller
                         $single->user_code = AllFunction::getToken(6, $member->id);
                         $single->Save();
                         $referby = User::where('user_code', '=', $single->refer)->first();
-                        $descendant = $referby->refer()->first()->getDescendantsAndSelf()->count();
+                        $descendant = $referby->referral()->first()->getDescendantsAndSelf()->count();
+                        $downline = User::where('refer','=', $single->refer)->count();
 
-                        if ($descendant > 3) {
+                        if ($downline > 3) {
                             // dd($descendant);
                             Pool::create(array(
-                                'user_id' => $member->id
+                                'user_id' => $member->id,
+                                'refer_id' => $referby->id
                             ));
                         }
 
@@ -184,7 +196,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $mylevel = $user->refer()->first()->getDescendants();
+        $mylevel = $user->referral()->first()->getDescendants();
         //$notification = $referby->refer()->first()->getDescendantsAndSelf(7);
         $mycount = $mylevel->count();
         return view('update', compact('user', 'mycount'));
@@ -234,9 +246,9 @@ class UserController extends Controller
         }else {
            // $referby = User::find(1);
             $referby = User::where('user_code','=',$user->refer)->first();
-            $notification = $referby->refer()->first()->getAncestorsAndSelf();
+            $notification = $referby->referral()->first()->getAncestorsAndSelf();
             $counted = $notification->count();
-            $descendant = $referby->refer()->first()->getDescendantsAndSelf()->count();
+            $descendant = $referby->referral()->first()->getDescendantsAndSelf()->count();
 //        foreach($notification as $notify) {
 //            dd($notify->getDescendants()->count());
 //        }
@@ -297,5 +309,9 @@ class UserController extends Controller
         $mylevel = $user->refer()->first()->getDescendants();
         $mycount = $mylevel->count();
         return view('help', compact('user', 'mycount'));
+    }
+
+    public function Genealogy(){
+
     }
 }
