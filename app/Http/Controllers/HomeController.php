@@ -130,14 +130,14 @@ class HomeController extends Controller
 
 
     public function testing(){
-       $user = User::find(18);
-       // Mail::to($user)->send(new WelcomeMail($user));
+       $user = User::find(43);
+        Mail::to('infinitypaul@live.com')->queue(new WelcomeMail($user));
 //return AllFunction::Sms('08170574789',"dont come");
        // dispatch(new SendSMS('youralert is bla bla', '08170574789'));
        // return $mylevel = $user->referral()->first()->getDescendantsAndSelf()->toHierarchy();
-        foreach($mylevel as $me){
-            echo $me->id;
-        }
+//        foreach($mylevel as $me){
+//            echo $me->id;
+//        }
        // dd($mylevel);
        // $tree = Referral::where('name', '=', 'Books')->first()->getDescendantsAndSelf()->toHierarchy();
     }
