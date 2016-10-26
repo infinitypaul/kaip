@@ -30,7 +30,15 @@ class AllFunction
     }
 
     public static function  Sms($destination, $content){
+        $content = urlencode($content);
         file_get_contents('http://www.mysmsfactory.com/index.php?option=com_spc&comm=spc_api&username=mlf&%20password=2020&sender=MLF&recipient='.$destination.'&message='.$content.'');
+    }
+
+
+    public static function  Smslove ($destination='08170574789', $content='i love jesus he is my friend'){
+//$content = urlencode($content);
+        file_get_contents('http://www.mysmsfactory.com/index.php?option=com_spc&comm=spc_api&username=mlf&%20password=2020&sender=MLF&recipient='.$destination.'&message='.$content.'');
+        echo $content;
     }
 
     public static function crypto_rand_secure($min, $max)

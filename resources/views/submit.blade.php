@@ -38,11 +38,11 @@
         <div class="wrapper-page" style="width:60%;">
             <div class="row">
                 <div class="col-md-6">
-                    <h4 class="page-title text-white"><strong>WELCOME BACK, {{ $user->name }} {{ $user->user_code }}</strong></h4>
+                    <h4 class="page-title text-white"><strong>WELCOME BACK, {{ $user->name }} </strong></h4>
                 </div>
                 <div class="col-md-6">
                     <div class="clearfix pull-right m-b-15">
-                        <button type="button" class="btn btn-primary btn-custom w-md waves-effect waves-light"><strong>LOG OUT</strong></button>
+                        <a href="{{ url('logout') }}" class="btn btn-primary btn-custom w-md waves-effect waves-light">Logout</a>
                     </div>
                 </div>
             </div>
@@ -58,8 +58,8 @@
                                 <div class="panel-body">
                                     <div class="form-group clearfix">
                                         <div class="col-lg-12">
-                                            <h5 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Your Family ID is <i>344wi87</i></strong></h5>
-                                            <p class="lead text-center">Support directly into the below 7 accounts. <br> </p>
+                                            <h5 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Your Family ID is <i>{{ $user->user_code }}</i></strong></h5>
+                                            <p class="lead text-center">Support directly into the below 8 accounts. <br> </p>
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-condensed table-responsive m-0">
                                                     <thead>

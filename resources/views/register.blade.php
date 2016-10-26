@@ -194,11 +194,11 @@
                             <div class="col-sm-6 form-inline controls{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label>Gender: </label>
                                 <div class="radio radio-inline radio-warning">
-                                    <input type="radio" id="male" value="option1" name="gender" checked="">
+                                    <input type="radio" id="male" value="m" name="gender" checked="">
                                     <label for="male"> Male </label>
                                 </div>
                                 <div class="radio radio-inline radio-warning">
-                                    <input type="radio" id="female" value="option2" name="gender">
+                                    <input type="radio" id="female" value="f" name="gender">
                                     <label for="female"> Female </label>
                                 </div>
                             </div>

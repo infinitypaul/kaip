@@ -7,5 +7,11 @@
       <schema-pattern>mlf.*</schema-pattern>
       <default-schemas>mlf.*</default-schemas>
     </data-source>
+    <data-source name="mlfonline" uuid="1152ae8f-8d7c-489c-a670-6bd486b192a3">
+      <secret-storage>master_key</secret-storage>
+      <user-name>infinitypaul</user-name>
+      <schema-pattern>libertyskoro.*</schema-pattern>
+      <default-schemas>information_schema.*</default-schemas>
+    </data-source>
   </component>
 </project>

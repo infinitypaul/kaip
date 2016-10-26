@@ -107,20 +107,20 @@ class HomeController extends Controller
     }
 
     public function created(){
-//        $child = Referral::find(18);
+//        $child = Referral::find(24);
 //        $child->delete();
 
 
-//        $real = Auth::user();
-//        $user = User::find(35);
-//        $root = Referral::find(17);
-//        $child2 = Referral::create(['name' => $user->user_code]);
-//        $child2->makeChildOf($root);
-//        $real->active = 1;
-//        $real->Save();
-//        $user->referral()->attach($child2);
+        $real = User::find(49);
+        $user = User::find(43);
+        $root = Referral::find(22);
+        $child2 = Referral::create(['name' => $real->user_code]);
+        $child2->makeChildOf($root);
+        $real->active = 1;
+        $real->Save();
+        $real->referral()->attach($child2);
 
-        echo  $formatted_date = Carbon::now()->addDay(1)->toDateTimeString();
+       // echo  $formatted_date = Carbon::now()->addDay(1)->toDateTimeString();
 
 
 ////        $user = User::find(18);
@@ -130,9 +130,12 @@ class HomeController extends Controller
 
 
     public function testing(){
-       $user = User::find(43);
-        Mail::to('infinitypaul@live.com')->queue(new WelcomeMail($user));
-//return AllFunction::Sms('08170574789',"dont come");
+//       $user = User::find(43);
+//        $when = Carbon::now()->addMinutes(2);
+//
+//        Mail::to('infinitypaul@live.com')->later($when, new WelcomeMail($user));
+       // Mail::to('infinitypaul@live.com')->queue(new WelcomeMail($user));
+ return AllFunction::Smslove('08183257848',"Your SMS vode is bla bla bla");
        // dispatch(new SendSMS('youralert is bla bla', '08170574789'));
        // return $mylevel = $user->referral()->first()->getDescendantsAndSelf()->toHierarchy();
 //        foreach($mylevel as $me){
@@ -140,6 +143,7 @@ class HomeController extends Controller
 //        }
        // dd($mylevel);
        // $tree = Referral::where('name', '=', 'Books')->first()->getDescendantsAndSelf()->toHierarchy();
+
     }
 
 
