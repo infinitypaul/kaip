@@ -260,7 +260,7 @@
 <!-- Custom main Js -->
 <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
-
+<script src="{{ asset('assets/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js') }}"></script>
 
 <script type="text/javascript">
 	jQuery(document).ready(function($) {

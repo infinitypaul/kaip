@@ -111,14 +111,14 @@ class HomeController extends Controller
 //        $child->delete();
 
 //
-//        $real = User::find(52);
-//        $user = User::find(43);
-//        $root = Referral::find(25);
-//        $child2 = Referral::create(['name' => $real->user_code]);
-//        $child2->makeChildOf($root);
-//        $real->active = 1;
-//        $real->Save();
-//        $real->referral()->attach($child2);
+        $real = User::find(57);
+        $user = User::find(43);
+        $root = Referral::find(26);
+        $child2 = Referral::create(['name' => $real->user_code]);
+        $child2->makeChildOf($root);
+        $real->active = 1;
+        $real->Save();
+        $real->referral()->attach($child2);
 
        // echo  $formatted_date = Carbon::now()->addDay(1)->toDateTimeString();
 

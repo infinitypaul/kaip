@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
                         <div class="panel panel-border panel-inverse">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Update your profile information</h3>
@@ -20,10 +21,6 @@
                                             {!! Form::uploadcare('image', null, array('data-crop' => '3:4')) !!}
                                         </div>
                                     </div>
-
-
-
-
                                     <div class="col-md-9">
 
                                             <div class="form-group">
@@ -75,8 +72,13 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5 control-label">Date Of Birth</label>
                                                 <div class="col-sm-7">
+<<<<<<< HEAD
                                                     <input class="form-control" type="text" value="" placeholder="{{ $user->dob }}" name="dob">
 
+=======
+                                                    <input class="form-control" type="text" value="" placeholder="{{ $user->dob }}" data-mask="99/99/9999" name="dob">
+                                                    <span class="font-13 text-muted">mm/dd/yyyy</span>
+>>>>>>> bc7134d0a43a6c4f24855c00b267265e261c1106
                                                 </div>
                                             </div>
 
