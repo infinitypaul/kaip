@@ -75,7 +75,7 @@
                                             <div class="form-group">
                                                 <label class="col-sm-5 control-label">Date Of Birth</label>
                                                 <div class="col-sm-7">
-                                                    <input class="form-control" type="date" value="" placeholder="{{ $user->dob }}" data-mask="99/99/9999" name="dob">
+                                                    <input class="form-control" type="text" value="" placeholder="{{ $user->dob }}" data-mask="99/99/9999" name="dob">
                                                     <span class="font-13 text-muted">mm/dd/yyyy</span>
                                                 </div>
                                             </div>
