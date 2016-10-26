@@ -6,7 +6,7 @@
         <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
         <meta name="author" content="Coderthemes">
 
-        <link rel="shortcut icon" href="assets/images/favicon_1.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.png">
 
         <title>MLF | Login</title>
 
@@ -35,7 +35,7 @@
         <div class="wrapper-page">
 
             <div class="text-center">
-                <a href="index.html" class="logo logo-lg"><i class="md md-equalizer"></i> <span>MLF</span> </a>
+                <a href="login"><img src="assets/images/logo2.png" width="200px" height="auto" style="margin-bottom: 20px;"> </a>
             </div>
 @include('layouts.emessage')
             <form class="form-horizontal m-t-20" method="post" action="{{ url('login') }}">
