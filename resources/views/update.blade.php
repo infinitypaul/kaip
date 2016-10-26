@@ -21,10 +21,6 @@
                                             {!! Form::uploadcare('image', null, array('data-crop' => '3:4')) !!}
                                         </div>
                                     </div>
-
-
-
-
                                     <div class="col-md-9">
 
                                             <div class="form-group">
