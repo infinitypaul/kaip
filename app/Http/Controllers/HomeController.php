@@ -111,9 +111,9 @@ class HomeController extends Controller
 //        $child->delete();
 
 
-        $real = User::find(49);
+        $real = User::find(50);
         $user = User::find(43);
-        $root = Referral::find(22);
+        $root = Referral::find(25);
         $child2 = Referral::create(['name' => $real->user_code]);
         $child2->makeChildOf($root);
         $real->active = 1;
