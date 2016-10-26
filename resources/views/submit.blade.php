@@ -58,7 +58,7 @@
                                 <div class="panel-body">
                                     <div class="form-group clearfix">
                                         <div class="col-lg-12">
-                                            <h5 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Your Family ID is <i>344wi87</i></strong></h5>
+                                            <h5 class="page-title" style="background-color:#154604; color:#fff; padding: 10px;"><strong>Your Family ID is <i>{{ $user->user_code }}</i></strong></h5>
                                             <p class="lead text-center">Support directly into the below 7 accounts. <br> </p>
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-condensed table-responsive m-0">
