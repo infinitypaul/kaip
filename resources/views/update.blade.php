@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
                         <div class="panel panel-border panel-inverse">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Update your profile information</h3>
