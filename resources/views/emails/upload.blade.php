@@ -1,1 +1,0 @@
-Attached is {{ $Code }} Proof of Payment
