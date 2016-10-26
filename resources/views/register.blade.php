@@ -135,7 +135,7 @@
                             <div class="col-sm-12 col-md-6 controls{{ $errors->has('Password') ? ' has-error' : '' }}">
                                 <input id="passwdfield" name="Password" class="required form-control" aria-required="true" type="password" placeholder="Password">
                                 <i class="md md-vpn-key form-control-feedback l-h-34"></i>
-                                <span class="font-13 text-muted text-inverse">Minimum of six characters</span>
+                                <span class="font-13 text-muted text-primary">Minimum of six characters</span>
                                 @if ($errors->has('Password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Password') }}</strong>
