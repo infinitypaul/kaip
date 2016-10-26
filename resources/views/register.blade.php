@@ -6,13 +6,13 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
 
-    <link rel="shortcut icon" href="assets/images/favicon_1.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.png">
 
     <title>MLF | Register</title>
 
       <!-- Plugins css -->
-    <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+<!--     <link href="assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"> -->
     <link href="assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -53,7 +53,7 @@
 <div class="wrapper-page" style="width:60%;">
 
     <div class="text-center">
-        <a href="index.html" class="logo logo-lg"><i class="md md-equalizer"></i> <span>MLF</span> </a>
+        <a href="register"><img src="assets/images/logo2.png" width="200px" height="auto" style="margin-bottom: 20px;"> </a>
     </div>
     <div>
         <!-- <h4 class="text-dark  header-title m-t-0">Wizard With Form Validation</h4>
@@ -65,9 +65,9 @@
             {{ csrf_field() }}
             <div id="rootwizard" class="pull-in">
                 <ul>
-                    <li><a href="#first" data-toggle="tab" disabled><strong>BASIC DETAILS</strong></a></li>
-                    <li><a href="#second" data-toggle="tab"><strong>BANK DETAILS</strong></a></li>
-                    <li><a href="#third" data-toggle="tab"><strong>REGISTRATION MODE</strong></a></li>
+                    <li><a href="#first" style=" pointer-events: none; cursor: default;" data-toggle="tab" disabled><strong>BASIC DETAILS</strong></a></li>
+                    <li><a href="#second" style=" pointer-events: none; cursor: default;" data-toggle="tab"><strong>BANK DETAILS</strong></a></li>
+                    <li><a href="#third" style=" pointer-events: none; cursor: default;" data-toggle="tab"><strong>REGISTRATION MODE</strong></a></li>
                 </ul>
                 <div class="tab-content m-b-0 bx-s-0">
                     <div class="tab-pane fade" id="first">
@@ -135,6 +135,7 @@
                             <div class="col-sm-12 col-md-6 controls{{ $errors->has('Password') ? ' has-error' : '' }}">
                                 <input id="passwdfield" name="Password" class="required form-control" aria-required="true" type="password" placeholder="Password">
                                 <i class="md md-vpn-key form-control-feedback l-h-34"></i>
+                                <span class="font-13 text-muted text-primary">Minimum of six characters</span>
                                 @if ($errors->has('Password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('Password') }}</strong>
@@ -144,6 +145,15 @@
                         </div>
 
                         <div class="form-group">
+                            <div class="col-sm-12 col-md-6 controls{{ $errors->has('RePassword') ? ' has-error' : ''}}">
+                                <input id="passwdfield" name="RePassword" class="required form-control" aria-required="true" type="password" placeholder="Retype Password">
+                                <i class="md md-vpn-key form-control-feedback l-h-34"></i>
+                                @if ($errors->has('RePassword'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('RePassword') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                             <div class="col-sm-12 col-md-6 controls">
                                 <!-- <input class="required form-control" type="date" required="" placeholder="Area Of Interest"> -->
                                 <div class="controls{{ $errors->has('aoi') ? ' has-error' : '' }}">
@@ -160,26 +170,18 @@
                                 </div>
                                 <i class="fa fa-building-o form-control-feedback l-h-34"></i>
                             </div>
-                            <div class="col-sm-12 col-md-6 controls{{ $errors->has('RePassword') ? ' has-error' : ''
-                            }}">
-                                <input id="passwdfield" name="RePassword" class="required form-control" aria-required="true" type="password" placeholder="Retype Password">
-                                <i class="md md-vpn-key form-control-feedback l-h-34"></i>
-                                @if ($errors->has('RePassword'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('RePassword') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-sm-6 form-inline controls{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <div class="col-sm-12 col-md-6 {{ $errors->has('dob') ? ' has-error' : '' }}">
                                 <label class="control-label">Date Of Birth</label>
-                                <!-- <input id="dobfield" name="dob" class="required form-control" aria-required="true"type="date" placeholder="Date of Birth" value="{{ old('dob') }}"> -->
-                                <div class="input-group">
+                                <input id="dobfield" name="dob" class="required form-control" aria-required="true" type="text" placeholder="Date of Birth" data-mask="99/99/9999" value="{{ old('dob') }}">
+                                <span class="font-13 text-muted">mm/dd/yyyy</span>
+
+                                <!-- <div class="input-group">
                                     <input name="dob" type="text" class="required form-control" placeholder="mm/dd/yyyy" id="dobfield" value="{{ old('dob') }}">
                                     <span class="input-group-addon bg-primary b-0 text-white"><i class="ion-calendar"></i></span>
-                                </div>
+                                </div> -->
                                 <!-- <i class="md md-alarm-on form-control-feedback l-h-34"></i> -->
                                 @if ($errors->has('dob'))
                                     <span class="help-block">
@@ -187,6 +189,7 @@
                                     </span>
                                 @endif
                             </div>
+
 
                             <div class="col-sm-6 form-inline controls{{ $errors->has('gender') ? ' has-error' : '' }}">
                                 <label>Gender: </label>
@@ -269,8 +272,6 @@
                                 <div class="controls{{ $errors->has('aoi') ? ' has-error' : '' }}">
                                     <select class="required form-control" id="bnknamefield" name="bn" >
                                         <option>Select Bank</option>
-                                        <option>Farming</option>
-                                        <option>Transport</option>
                                         <option>Access Bank Plc</option>
                                         <option>Citibank Nigeria Limited</option>
                                         <option>Diamond Bank Plc</option>
@@ -597,14 +598,14 @@
     }
 </Script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     // Date Picker
     jQuery('#datepicker').datepicker();
     jQuery('#dobfield').datepicker({
         autoclose: true,
         todayHighlight: true
     });
-</script>
+</script> -->
 
 </body>
 </html>
